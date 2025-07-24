@@ -30,3 +30,7 @@
 //Quando não lberamos a memória após o uso, isso pode resultar em vazamento de memória.
 
 // void free(void* ptr); //ptr: ponteiro para o bloco de memória ser liberado
+
+//
+
+//Existe também a função "realloc".
