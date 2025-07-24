@@ -34,3 +34,5 @@
 //
 
 //Existe também a função "realloc".
+
+//void *realloc (void *ptr, size_t newsize);
