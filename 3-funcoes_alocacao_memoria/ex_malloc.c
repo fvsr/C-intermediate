@@ -8,31 +8,26 @@
 
 // void* malloc(size_t size); //"size" recebe o número de bytes que queremos alocar
 
-//
+#include <stdio.h>
+#include <stdlib.h>
 
-//A função "calloc"
+int main(){
+    int* ponteiro; //aqui o asterisco indica que o tipo da variável é um ponteiro
+    ponteiro = (int*)malloc(5 * sizeof(int)); //"int*" retorna o endereço do início da memória alocada
 
-//A função "calloc" também aloca um bloco contínuo de memória.
-//Ela recebe dois argumentos, o número de elementos e o tamanho de cada argumento.
-//Ela também inicia todos os bytes de memória do bloco com zero.
+    if(ponteiro != NULL){
+        int i;
+        for(i=0; i<5; i++){
+            ponteiro[i] = i + 1;
+        }
+        for(i=0; i<5; i++){
+            printf("A posição %d do array contém o valor %d.\n", i, ponteiro[i]);
+        }
+        free(ponteiro);
+    }
+    else{
+        printf("Erro na alocaçõa de memória.\n");
+    }
 
-//void* calloc(size_t num_elements, size_t size_of_each_element);
-//"num_elements" é o número de elementos a serem alocados.
-//"size_of_each_element" é o tamanho em bytes de cada elemento.
-
-//
-
-//A função "free"
-
-//Libera memória que foi alocada dinamicamente pela função "malloc" ou "calloc".
-//Após o uso da memória alocada, sempre devemos liberar esse espaço com a função "free",
-//para que ele esteja disponível para outras partes do programa, ou para outros programas.
-//Quando não lberamos a memória após o uso, isso pode resultar em vazamento de memória.
-
-// void free(void* ptr); //ptr: ponteiro para o bloco de memória ser liberado
-
-//
-
-//Existe também a função "realloc".
-
-//void *realloc (void *ptr, size_t newsize);
+    return 0;
+}
