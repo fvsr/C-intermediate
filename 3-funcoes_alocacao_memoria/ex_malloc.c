@@ -5,6 +5,8 @@
 //A função "maloc" recebe o número de bytes que desejamos alocar,
 //e retorna um ponteiro para o inicio do bloco de memória.
 //Se não houver memória suficiente disponível, "malloc" retorna "NULL".
+//Ao final do uso é preciso liberar a memória usada através da função "free",
+//pois a função "malloc" não faz isso automaticamente
 
 // void* malloc(size_t size); //"size" recebe o número de bytes que queremos alocar
 
