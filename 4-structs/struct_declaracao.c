@@ -2,7 +2,7 @@
 
 //includes
 #include <stdio.h>
-#include <string.h>
+#include <string.h> //incluída para usar a função strcpy
 
 //A palavra "Pessoa" é a tag (rótulo ou nome) da struct. 
 //É o nome atribuido a um tipo de dado composto, também chamado de tipo agregado,
@@ -19,16 +19,16 @@ struct Pessoa{
 struct Pessoa pessoa1;
 struct Pessoa pessoa2;
 
-//Inicialização da variável "pessoa1", do tipo "struct Pessoa", 
-//todos os membros da "struct Pessoa" são inicializados ao mesmo tempo 
+//Inicialização direta da variável "pessoa1", do tipo "struct Pessoa", 
+//aqui todos os membros da "struct Pessoa" são inicializados ao mesmo tempo. 
 struct Pessoa pessoa1 = {"Maria", 28, "12345-6789"};
 
 //função principal
 int main(){
 
     //Inicialização da variável "pessoa2", do tipo "struct Pessoa",
-    //os membros da "struct Pessoa" são inicializados individualmente
-    //A função strcpy tem que ser chamada de dentro do main
+    //os membros da "struct Pessoa" são inicializados separadamente
+    //A função strcpy tem que ser chamada de dentro do main.
     strcpy(pessoa2.nome, "João");
     pessoa2.idade = 32;
     strcpy(pessoa2.telefone, "98765-4321");

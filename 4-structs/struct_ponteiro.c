@@ -1,19 +1,24 @@
 //Ponteiros para uma struct
+//Acesso direto e indireto a uma struct
 
 //includes de bibliotecas
 #include <stdio.h>
 #include <string.h>
 
-//Declaração do formato da struct
+//Definição do formato da struct
 struct Paciente{
     char nome[50];
     int idade;
     char telefone[15];
 }; //Este ponto e vírgula é importante
 
-//Declaração de uma variável do tipo da struct declarada anteriormente
+//Declaração de uma variável do tipo da struct definida anteriormente
 struct Paciente paciente1;
-struct Paciente *pPaciente = &paciente1; //O ponteiro aponta para o endereço de "paciente1"
+
+//Na declaração de um ponteiro o "*" faz parte do tipo,
+//mostrando que a variável se destingue por ser um ponteiro. 
+//Aqui o ponteiro é declarado e inicializado.
+struct Paciente *pPaciente = &paciente1; //O ponteiro aponta para o endereço de "paciente1".
 
 //função principal
 int main(){
