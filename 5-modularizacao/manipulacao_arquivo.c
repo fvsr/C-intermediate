@@ -16,7 +16,7 @@
 //"w" abre o arquivo para escrita.
 //"a" abre o arquivo para adicionar conteúdo.
 //"r+" abre o arquivo para leitura e escrita.
-//Se o arquivo não existir a função fopen() retorna nulo,
+//Se o arquivo não existir a função fopen() retorna nulo (NULL), 
 //indicando que algo deu errado.
 
 //Usando a função fprintf(arquivo, "Nome: %s\nIdade: %d\n", nome, idade);
@@ -66,7 +66,7 @@ int main(){
     printf("Nome: %s\nIdade: %d", nome, idade);
 
     //Fechando o arquivo
-    //fclose(arquivo);
+    fclose(arquivo);
 
     return 0;
 }
