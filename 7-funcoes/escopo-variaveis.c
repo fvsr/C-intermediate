@@ -15,19 +15,19 @@ ou quando é finalizada a execução de um procedimento, que é uma subrotina qu
 //Simulação de um sistema de gestão de estoque
 #include <stdio.h>
 
-//variável global
+//variável global para o total de ítens no estoque
 int totalEstoque = 100; //declarada fora de uma função
                         //é acessível dentro de qualquer função
                         //o valor atualizado esta sempre disponível
 
-//Função para adicionar ítens ao estoque
+//Procedimento para adicionar ítens ao estoque
 void adicionarEstoque(int quantidade){ //A variável "quantidade" é parâmetro formal.
     totalEstoque += quantidade;
     printf("Ítens adicionados: %d.\n", quantidade);
     printf("Estoque atualizado: %d.\n", totalEstoque);
 }
 
-//Função para remover ítens do estoque
+//Procedimento para remover ítens do estoque
 void removerEstoque(int quantidade){ //A variável "quantidade" é parâmetro formal.
     if(quantidade <= totalEstoque){
         totalEstoque -= quantidade;
