@@ -3,7 +3,7 @@
 //O erro ao usar a função "malloc" ocorre ao tentar liberar memória estática.
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> //a função malloc usa esta biblioteca
 
 int main (){
     //declaração de uma variável comum e um ponteiro
