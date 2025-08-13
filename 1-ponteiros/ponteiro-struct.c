@@ -7,15 +7,17 @@
 #include <stdlib.h> //a função malloc usa esta biblioteca
 
 typedef struct {
-
     char nome[50];
     int idade;
-
 } Pessoa;
 
 int main () {
     //p é um ponteiro para uma struct do tipo Pessoa
-    Pessoa *p = (Pessoa*)malloc(sizeof(Pessoa));
+    //Pessoa *p = (Pessoa*)malloc(sizeof(Pessoa)); //declara e inicializa a variável em uma linha
+    
+    //Também poderia ser:
+    Pessoa *p; //declara avariável
+    p = (Pessoa*)malloc(sizeof(Pessoa)); //inicializa a variável
 
     //preenchendo a struct apontada com dados
     printf("Digite seu nome: ");
@@ -30,4 +32,3 @@ int main () {
     free(p);
     return 0;
 }
-
