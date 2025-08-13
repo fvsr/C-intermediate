@@ -18,9 +18,9 @@ int main () {
 
     //exibir valores
     printf("Valor de x: %d\n", x);
-    printf("Endereço de x: %p\n", &x);
-    printf("Conteúdo de p (o endereço de x) %p",p);
-    printf("O valor apontado por p (é p desreferenciado) %d", *p);
+    printf("Endereço de x (&x): %p\n", &x);
+    printf("Conteúdo de p (o endereço de x): %p\n",p);
+    printf("O valor apontado por p (é p desreferenciado, ou *p): %d\n", *p);
 
     return 0;
 }
