@@ -2,6 +2,10 @@
 
 //Construção de um sistema para biblioteca com uso de alocação dinâmica.
 
+//Bug: ao digitar a opção ele entende letras como sendo 0 (zero) e sai do sistema.
+//Para corrigir, ao receber uma letra deve mostrar uma mensagem "Digitar letra não é uma opção válida",
+//e depois novamente "Escolha uma opção: ".
+
 //includes
 #include <stdio.h>
 #include <stdlib.h>
@@ -61,9 +65,9 @@ int main () {
     int opcao;
 
     do{
-        printf("====================================\n");
-        printf("    Sistema de biblioteca (parte 2)   ");
-        printf("====================================\n");
+        printf("=====================================\n");
+        printf("    Sistema de biblioteca (parte 2) \n");
+        printf("=====================================\n");
         printf("1 - Cadastrar novo livro\n");
         printf("2 - Listar todos os livros\n");
         printf("3 - Realizar empréstimo\n");
@@ -77,19 +81,19 @@ int main () {
 
         switch(opcao){
             case 1: //cadastro de livro
-                printf("---Cadastro de novo livro---\n\n");
+                printf("\n---Cadastro de novo livro---\n\n");
                 if(totalLivros < MAX_LIVROS){
                     //Devido ao uso de fgets, o acesso aos campos é igual ao do array estático.
                     //isso acontece porque a função fgets já espera uma ponteiro no primeiro parâmetro:
                     //char *fgets(char *str...
                     //Se "biblioteca" não fosse um ponteiro, aqui se usaria o operador seta (verificar), ->.
                     //O comando "stdin" significa que vai ser lida a entrada do teclado.
-                    printf("Digite o nome do livro ");
+                    printf("Digite o nome do livro: ");
                     fgets(biblioteca[totalLivros].nome, TAM_STRING, stdin);
                     //A mesma coisa para autor e editora
-                    printf("Digite o nome do autor ");
+                    printf("Digite o nome do autor: ");
                     fgets(biblioteca[totalLivros].autor, TAM_STRING, stdin);
-                    printf("Digite o nome da editora ");
+                    printf("Digite o nome da editora: ");
                     fgets(biblioteca[totalLivros].editora, TAM_STRING, stdin);
 
                     //Eliminar o carácter "\n" que pode causar problemas depois
@@ -107,40 +111,50 @@ int main () {
 
                     //Ao cadastrar o livro automaticamente se torna disponível
                     biblioteca[totalLivros].disponivel = 1;
+
+                    totalLivros++;
+                    printf("\nLivro cadastrado com sucesso!\n");
                 }
+                else{
+                    printf("Biblioteca cheia!\n");
+                }
+                printf("\nPressione qualquer tecla apra continuar...");
+                getchar();
             break;
 
             case 2: //Listagem de livros
-                printf("---Lista de livros cadastrados---\n\n");
+                printf("\n---Lista de livros cadastrados---\n");
                 if(totalLivros == 0){
                     printf("Nenhum livro cadastrado ainda.");
                 }
                 else{
                     for(int i=0; i<totalLivros; i++){
-                        printf("-----------------------");
+                        printf("-----------------------\n");
                         printf("Livro %d\n", i+1);
                         printf("Nome: %s\n", biblioteca[i].nome);
                         printf("Autor: %s\n", biblioteca[i].autor);
-                        printf("Disponibilidade: %d", biblioteca[i].disponivel ? "Disponível" : "Emprestado");
+                        //O campo "biblioteca[i].disponivel" é um "int", mas a saída do "if" é texto.
+                        //Por isso não é "%d" e sim "%s".
+                        printf("Disponibilidade: %s\n", biblioteca[i].disponivel ? "Disponível" : "Emprestado");
                     }
                     printf("-----------------------");
                 }
-                printf("Pressione qualquer tecla para continuar...");
+                printf("\nPressione qualquer tecla para continuar...");
                 getchar();
             break;
 
             case 3:
-                printf("---Realizar empréstimos");
+                printf("\n---Realizar empréstimos---");
 
                 if(totalEmprestimos >= MAX_EMPRESTIMOS){
                     printf("Limite de empréstimos atingido!\n\n");
                 }
                 else{
-                    printf("Livros disponíveis:\n");
+                    printf("\nLivros disponíveis:\n");
                     int disponiveis = 0;
                     for(int i=0; i<totalLivros; i++){
                         if(biblioteca[i].disponivel == 1){
-                            printf("%d - %s", i+1, biblioteca[i].nome);
+                            printf("%d - %s\n", i+1, biblioteca[i].nome);
                             disponiveis++;
                         }
                     }
@@ -156,7 +170,7 @@ int main () {
 
                         //Validação da escolha do usuário.
                         if(indice >= 0 && indice < totalLivros && biblioteca[indice].disponivel){
-                            printf("Digite o nome do usuário que está pegando o livro:");
+                            printf("Digite o nome do usuário que está pegando o livro: ");
                             fgets(emprestimos[totalEmprestimos].nomeUsuario, TAM_STRING, stdin);
                             emprestimos[totalEmprestimos].nomeUsuario[strcspn(emprestimos[totalEmprestimos].nomeUsuario,"\n")] = '\0';
 
@@ -179,7 +193,7 @@ int main () {
             break;
             
             case 4: //Listar empréstimos
-                printf("---Lista de empréstimos---\n\n");
+                printf("---Lista de empréstimos---\n");
                 if(totalEmprestimos == 0){
                     printf("Nenhum empréstimo realizado.\n");
                 }
@@ -187,7 +201,7 @@ int main () {
                     for(int i=0; i<totalEmprestimos; i++){
                         //Usa o índice armazenado no empréstimo para buscar o nome do livro.
                         int indiceLivro = emprestimos[i].indiceLivro;
-                        printf("--------------------------------");
+                        printf("--------------------------------\n");
                         printf("EMPRESTIMO %d\n", i+1);
                         printf("Livro: %s\n", biblioteca[indiceLivro].nome);
                         printf("Usuário: %s\n", emprestimos[i].nomeUsuario);
