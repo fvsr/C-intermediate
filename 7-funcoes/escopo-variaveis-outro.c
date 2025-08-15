@@ -2,10 +2,10 @@
 
 //Escopo de uma variável é a região do código onde a variável é visível e pode ser acessada.
 //Tem a ver com a área de atuação e com o tempo de vida de uma variável.
-//O escopo garante que as variáveis só terão seus dados modicaficados nos lugares corretos.
+//O escopo garante que as variáveis só terão seus dados modificados nos lugares corretos.
 
 //Escopo local: é quando a variável é declarada dentro uma função ou bloco de código.
-//A variável começa a existir quando a função começa e deixa de existir quando afunção termina.
+//A variável começa a existir quando a função começa e deixa de existir quando a função termina.
 //A variável é temporária e privada.
 /*
 void minhaFuncao() {
